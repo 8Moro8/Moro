@@ -5,22 +5,24 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 def load_and_process_data(country, file_path_prefix):
-    pandas_df_2014 = pd.read_excel(file_path_prefix + '_2014.xlsx')
-    pandas_df_2015 = pd.read_excel(file_path_prefix + '_2015.xlsx')
-    pandas_df_2016 = pd.read_excel(file_path_prefix + '_2016.xlsx')
-    pandas_df_2017 = pd.read_excel(file_path_prefix + '_2017.xlsx')
+    import pandas as pd
+    import requests
+    from io import BytesIO
 
-    F_ad_Prob_Mod_Sev_2014 = (pandas_df_2014['Prob_Mod_Sev'] * pandas_df_2014['wt']).sum() / pandas_df_2014['wt'].sum()
-    F_ad_Prob_Mod_Sev_2015 = (pandas_df_2015['Prob_Mod_Sev'] * pandas_df_2015['wt']).sum() / pandas_df_2015['wt'].sum()
-    F_ad_Prob_Mod_Sev_2016 = (pandas_df_2016['Prob_Mod_Sev'] * pandas_df_2016['wt']).sum() / pandas_df_2016['wt'].sum()
-    F_ad_Prob_Mod_Sev_2017 = (pandas_df_2017['Prob_Mod_Sev'] * pandas_df_2017['wt']).sum() / pandas_df_2017['wt'].sum()
+    base_url = 'https://github.com/8Moro8/Moro/raw/main/'
 
-    F_ad_Prob_Mod_Sev_values = [
-        float(F_ad_Prob_Mod_Sev_2014),
-        float(F_ad_Prob_Mod_Sev_2015),
-        float(F_ad_Prob_Mod_Sev_2016),
-        float(F_ad_Prob_Mod_Sev_2017)
-    ]
+    F_ad_Prob_Mod_Sev_values = []
+
+    for year in range(2014, 2018):
+        file_name = f"{file_path_prefix}_{year}.xlsx"
+        file_url = base_url + file_name
+        response = requests.get(file_url)
+        
+        if response.status_code == 200:
+            excel_data = response.content
+            pandas_df = pd.read_excel(BytesIO(excel_data))
+            F_ad_Prob_Mod_Sev = (pandas_df['Prob_Mod_Sev'] * pandas_df['wt']).sum() / pandas_df['wt'].sum()
+            F_ad_Prob_Mod_Sev_values.append(float(F_ad_Prob_Mod_Sev))
 
     return F_ad_Prob_Mod_Sev_values
 
