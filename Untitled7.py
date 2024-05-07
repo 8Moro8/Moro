@@ -21,20 +21,18 @@ excel_urls = {
     'uzb_2017': 'https://github.com/8Moro8/Moro/blob/main/uzb_2017.xlsx'
 }
 
+# Выбор файла
+file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
+
 # Загрузка данных
-countries = ['Казахстан', 'Кыргызстан', 'Таджикистан', 'Узбекистан']
-country = st.selectbox('Выберите страну', countries)
+@st.cache  # Кэширование данных для повышения производительности
+def load_data(file_url):
+    return pd.read_excel(file_url, engine='openpyxl')
 
-file_path_prefixes = {
-    'Казахстан': 'kaz',
-    'Кыргызстан': 'kgz',
-    'Таджикистан': 'tjk',
-    'Узбекистан': 'uzb'
-}
-file_path_prefix = file_path_prefixes[country]
+    F_ad_Prob_Mod_Sev = (pandas_df['Prob_Mod_Sev'] * pandas_df['wt']).sum() / pandas_df['wt'].sum()
+    F_ad_Prob_Mod_Sev_values.append(float(F_ad_Prob_Mod_Sev))
 
-F_ad_Prob_Mod_Sev_values = load_and_process_data(country, file_path_prefix)
+df = load_data(excel_urls[file_name])
 
-# Отображение результатов
-st.title(country)
-st.line_chart(F_ad_Prob_Mod_Sev_values)
+# Отображение данных
+st.write(df)
