@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import requests
 from io import BytesIO
 import streamlit as st
@@ -23,26 +22,18 @@ def load_and_process_data(country, file_path_prefix):
 
     return F_ad_Prob_Mod_Sev_values
 
-st.title("Анализ данных Центральной Азии")
+countries = ['Казахстан', 'Кыргызстан', 'Таджикистан', 'Узбекистан']
+country = st.selectbox('Выберите страну', countries)
 
-plt.figure(figsize=(10, 6))
+file_path_prefixes = {
+    'Казахстан': 'kaz',
+    'Кыргызстан': 'kgz',
+    'Таджикистан': 'tjk',
+    'Узбекистан': 'uzb'
+}
+file_path_prefix = file_path_prefixes[country]
 
-F_ad_Prob_Mod_Sev_kaz_values = load_and_process_data("Казахстан", r'C:\Users\sekre\Downloads\kaz\KAZ')
-plt.plot(range(2014, 2018), F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
+F_ad_Prob_Mod_Sev_values = load_and_process_data(country, file_path_prefix)
 
-F_ad_Prob_Mod_Sev_uzb_values = load_and_process_data("Узбекистан", r'C:\Users\sekre\Downloads\uzb\UZB')
-plt.plot(range(2014, 2018), F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
-
-F_ad_Prob_Mod_Sev_tjk_values = load_and_process_data("Таджикистан", r'C:\Users\sekre\Downloads\tjk\TJK')
-plt.plot(range(2014, 2018), F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
-
-F_ad_Prob_Mod_Sev_kgz_values = load_and_process_data("Кыргызстан", r'C:\Users\sekre\Downloads\kgz\KGZ')
-plt.plot(range(2014, 2018), F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
-
-plt.title('Центральная Азия')
-plt.xticks(range(2014, 2018))
-plt.yticks(np.arange(0, 0.31, 0.05))
-plt.legend()
-plt.grid(True)
-
-st.pyplot(plt)
+st.title(countries)
+st.line_chart(F_ad_Prob_Mod_Sev_values)
