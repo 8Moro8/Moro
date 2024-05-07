@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly as pt
 
 excel_urls = {
     'kaz_2014': 'https://github.com/8Moro8/Moro/blob/main/kaz_2014.xlsx',
