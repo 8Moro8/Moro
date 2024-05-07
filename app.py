@@ -1,28 +1,214 @@
-import streamlit as st
 import pandas as pd
-import plotly.express as px
+import numpy as np
+import dask.dataframe as dd
+import streamlit as st
+import matplotlib.pyplot as plt
+
+kaz_2014 = r'C:\Users\sekre\Downloads\kaz\KAZ_2014_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kaz_2015 = r'C:\Users\sekre\Downloads\kaz\KAZ_2015_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kaz_2016 = r'C:\Users\sekre\Downloads\kaz\KAZ_2016_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kaz_2017 = r'C:\Users\sekre\Downloads\kaz\KAZ_2017_FIES_v01_EN_M_v01_A_OCS (1).dta'
+
+pandas_df_kaz_2014 = pd.read_stata(kaz_2014)
+pandas_df_kaz_2015 = pd.read_stata(kaz_2015)
+pandas_df_kaz_2016 = pd.read_stata(kaz_2016)
+pandas_df_kaz_2017 = pd.read_stata(kaz_2017)
+
+numeric_columns_kaz_2014 = pandas_df_kaz_2014.select_dtypes(include=[np.number]).columns
+pandas_df_kaz_2014[numeric_columns_kaz_2014] = pandas_df_kaz_2014[numeric_columns_kaz_2014].fillna(0)
+
+numeric_columns_kaz_2015 = pandas_df_kaz_2015.select_dtypes(include=[np.number]).columns
+pandas_df_kaz_2015[numeric_columns_kaz_2015] = pandas_df_kaz_2015[numeric_columns_kaz_2015].fillna(0)
+
+numeric_columns_kaz_2016 = pandas_df_kaz_2016.select_dtypes(include=[np.number]).columns
+pandas_df_kaz_2016[numeric_columns_kaz_2016] = pandas_df_kaz_2016[numeric_columns_kaz_2016].fillna(0)
+
+numeric_columns_kaz_2017 = pandas_df_kaz_2017.select_dtypes(include=[np.number]).columns
+pandas_df_kaz_2017[numeric_columns_kaz_2017] = pandas_df_kaz_2017[numeric_columns_kaz_2017].fillna(0)
+
+dask_df_kaz_2014 = dd.from_pandas(pandas_df_kaz_2014, npartitions=1)
+dask_df_kaz_2015 = dd.from_pandas(pandas_df_kaz_2015, npartitions=1)
+dask_df_kaz_2016 = dd.from_pandas(pandas_df_kaz_2016, npartitions=1)
+dask_df_kaz_2017 = dd.from_pandas(pandas_df_kaz_2017, npartitions=1)
+
+dask_df_kaz_2014.compute().to_excel(r"C:\Users\sekre\Downloads\kaz_2014.xlsx", index=False)
+dask_df_kaz_2015.compute().to_excel(r"C:\Users\sekre\Downloads\kaz_2015.xlsx", index=False)
+dask_df_kaz_2016.compute().to_excel(r"C:\Users\sekre\Downloads\kaz_2016.xlsx", index=False)
+dask_df_kaz_2017.compute().to_excel(r"C:\Users\sekre\Downloads\kaz_2017.xlsx", index=False)
+
+F_ad_Prob_Mod_Sev_kaz_2014 = (dask_df_kaz_2014['Prob_Mod_Sev'] * dask_df_kaz_2014['wt']).sum() / dask_df_kaz_2014['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2015 = (dask_df_kaz_2015['Prob_Mod_Sev'] * dask_df_kaz_2015['wt']).sum() / dask_df_kaz_2015['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2016 = (dask_df_kaz_2016['Prob_Mod_Sev'] * dask_df_kaz_2016['wt']).sum() / dask_df_kaz_2016['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2017 = (dask_df_kaz_2017['Prob_Mod_Sev'] * dask_df_kaz_2017['wt']).sum() / dask_df_kaz_2017['wt'].sum()
+
+F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
+
+years = range(2014, 2018)
+
+plt.figure(figsize=(10, 6))
+plt.title('Казахстан')
+plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
+plt.xticks(years)
+plt.yticks(np.arange(0, 0.31, 0.05))
+plt.grid(True)
+plt.show()
+
+uzb_2014 = r'C:\Users\sekre\Downloads\uzb\UZB_2014_FIES_v01_EN_M_v01_A_OCS (1).dta'
+uzb_2015 = r'C:\Users\sekre\Downloads\uzb\UZB_2015_FIES_v01_EN_M_v01_A_OCS (1).dta'
+uzb_2016 = r'C:\Users\sekre\Downloads\uzb\UZB_2016_FIES_v01_EN_M_v01_A_OCS (1).dta'
+uzb_2017 = r'C:\Users\sekre\Downloads\uzb\UZB_2017_FIES_v01_EN_M_v01_A_OCS (1).dta'
+
+pandas_df_uzb_2014 = pd.read_stata(uzb_2014)
+pandas_df_uzb_2015 = pd.read_stata(uzb_2015)
+pandas_df_uzb_2016 = pd.read_stata(uzb_2016)
+pandas_df_uzb_2017 = pd.read_stata(uzb_2017)
+
+numeric_columns_uzb_2014 = pandas_df_uzb_2014.select_dtypes(include=[np.number]).columns
+pandas_df_uzb_2014[numeric_columns_uzb_2014] = pandas_df_uzb_2014[numeric_columns_uzb_2014].fillna(0)
+
+numeric_columns_uzb_2015 = pandas_df_uzb_2015.select_dtypes(include=[np.number]).columns
+pandas_df_uzb_2015[numeric_columns_uzb_2015] = pandas_df_uzb_2015[numeric_columns_uzb_2015].fillna(0)
+
+numeric_columns_uzb_2016 = pandas_df_uzb_2016.select_dtypes(include=[np.number]).columns
+pandas_df_uzb_2016[numeric_columns_uzb_2016] = pandas_df_uzb_2016[numeric_columns_uzb_2016].fillna(0)
+
+numeric_columns_uzb_2017 = pandas_df_uzb_2017.select_dtypes(include=[np.number]).columns
+pandas_df_uzb_2017[numeric_columns_uzb_2017] = pandas_df_uzb_2017[numeric_columns_uzb_2017].fillna(0)
+
+dask_df_uzb_2014 = dd.from_pandas(pandas_df_uzb_2014, npartitions=1)
+dask_df_uzb_2015 = dd.from_pandas(pandas_df_uzb_2015, npartitions=1)
+dask_df_uzb_2016 = dd.from_pandas(pandas_df_uzb_2016, npartitions=1)
+dask_df_uzb_2017 = dd.from_pandas(pandas_df_uzb_2017, npartitions=1)
+
+dask_df_uzb_2014.compute().to_excel(r"C:\Users\sekre\Downloads\uzb_2014.xlsx", index=False)
+dask_df_uzb_2015.compute().to_excel(r"C:\Users\sekre\Downloads\uzb_2015.xlsx", index=False)
+dask_df_uzb_2016.compute().to_excel(r"C:\Users\sekre\Downloads\uzb_2016.xlsx", index=False)
+dask_df_uzb_2017.compute().to_excel(r"C:\Users\sekre\Downloads\uzb_2017.xlsx", index=False)
+
+F_ad_Prob_Mod_Sev_uzb_2014 = (dask_df_uzb_2014['Prob_Mod_Sev'] * dask_df_uzb_2014['wt']).sum() / dask_df_uzb_2014['wt'].sum()
+F_ad_Prob_Mod_Sev_uzb_2015 = (dask_df_uzb_2015['Prob_Mod_Sev'] * dask_df_uzb_2015['wt']).sum() / dask_df_uzb_2015['wt'].sum()
+F_ad_Prob_Mod_Sev_uzb_2016 = (dask_df_uzb_2016['Prob_Mod_Sev'] * dask_df_uzb_2016['wt']).sum() / dask_df_uzb_2016['wt'].sum()
+F_ad_Prob_Mod_Sev_uzb_2017 = (dask_df_uzb_2017['Prob_Mod_Sev'] * dask_df_uzb_2017['wt']).sum() / dask_df_uzb_2017['wt'].sum()
+
+F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
+
+plt.figure(figsize=(10, 6))
+plt.title('Узбекистан')
+plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-')
+plt.xticks(years)
+plt.yticks(np.arange(0, 0.31, 0.05))
+plt.grid(True)
+plt.show()
+
+tjk_2014 = r'C:\Users\sekre\Downloads\tjk\TJK_2014_FIES_v01_EN_M_v01_A_OCS (1).dta'
+tjk_2015 = r'C:\Users\sekre\Downloads\tjk\TJK_2015_FIES_v01_EN_M_v01_A_OCS (1).dta'
+tjk_2016 = r'C:\Users\sekre\Downloads\tjk\TJK_2016_FIES_v01_EN_M_v01_A_OCS (1).dta'
+tjk_2017 = r'C:\Users\sekre\Downloads\tjk\TJK_2017_FIES_v01_EN_M_v01_A_OCS (1).dta'
+
+pandas_df_tjk_2014 = pd.read_stata(tjk_2014)
+pandas_df_tjk_2015 = pd.read_stata(tjk_2015)
+pandas_df_tjk_2016 = pd.read_stata(tjk_2016)
+pandas_df_tjk_2017 = pd.read_stata(tjk_2017)
+
+numeric_columns_tjk_2014 = pandas_df_tjk_2014.select_dtypes(include=[np.number]).columns
+pandas_df_tjk_2014[numeric_columns_tjk_2014] = pandas_df_tjk_2014[numeric_columns_tjk_2014].fillna(0)
+
+numeric_columns_tjk_2015 = pandas_df_tjk_2015.select_dtypes(include=[np.number]).columns
+pandas_df_tjk_2015[numeric_columns_tjk_2015] = pandas_df_tjk_2015[numeric_columns_tjk_2015].fillna(0)
+
+numeric_columns_tjk_2016 = pandas_df_tjk_2016.select_dtypes(include=[np.number]).columns
+pandas_df_tjk_2016[numeric_columns_tjk_2016] = pandas_df_tjk_2016[numeric_columns_tjk_2016].fillna(0)
+
+numeric_columns_tjk_2017 = pandas_df_tjk_2017.select_dtypes(include=[np.number]).columns
+pandas_df_tjk_2017[numeric_columns_tjk_2017] = pandas_df_tjk_2017[numeric_columns_tjk_2017].fillna(0)
+
+dask_df_tjk_2014 = dd.from_pandas(pandas_df_tjk_2014, npartitions=1)
+dask_df_tjk_2015 = dd.from_pandas(pandas_df_tjk_2015, npartitions=1)
+dask_df_tjk_2016 = dd.from_pandas(pandas_df_tjk_2016, npartitions=1)
+dask_df_tjk_2017 = dd.from_pandas(pandas_df_tjk_2017, npartitions=1)
+
+dask_df_tjk_2014.compute().to_excel(r"C:\Users\sekre\Downloads\tjk_2014.xlsx", index=False)
+dask_df_tjk_2015.compute().to_excel(r"C:\Users\sekre\Downloads\tjk_2015.xlsx", index=False)
+dask_df_tjk_2016.compute().to_excel(r"C:\Users\sekre\Downloads\tjk_2016.xlsx", index=False)
+dask_df_tjk_2017.compute().to_excel(r"C:\Users\sekre\Downloads\tjk_2017.xlsx", index=False)
+
+F_ad_Prob_Mod_Sev_tjk_2014 = (dask_df_tjk_2014['Prob_Mod_Sev'] * dask_df_tjk_2014['wt']).sum() / dask_df_tjk_2014['wt'].sum()
+F_ad_Prob_Mod_Sev_tjk_2015 = (dask_df_tjk_2015['Prob_Mod_Sev'] * dask_df_tjk_2015['wt']).sum() / dask_df_tjk_2015['wt'].sum()
+F_ad_Prob_Mod_Sev_tjk_2016 = (dask_df_tjk_2016['Prob_Mod_Sev'] * dask_df_tjk_2016['wt']).sum() / dask_df_tjk_2016['wt'].sum()
+F_ad_Prob_Mod_Sev_tjk_2017 = (dask_df_tjk_2017['Prob_Mod_Sev'] * dask_df_tjk_2017['wt']).sum() / dask_df_tjk_2017['wt'].sum()
 
 
-file_paths = {
-    'Kazakhstan 2014': 'https://github.com/8Moro8/Moro/blob/main/kaz_2014.xlsx',
-    'Kazakhstan 2015': 'https://github.com/8Moro8/Moro/blob/main/kaz_2015.xlsx',
-    'Kazakhstan 2016': 'https://github.com/8Moro8/Moro/blob/main/kaz_2016.xlsx',
-    'Kazakhstan 2017': 'https://github.com/8Moro8/Moro/blob/main/kaz_2017.xlsx'
-}
+F_ad_Prob_Mod_Sev_tjk_values = [0.13234311608076732, 0.11086727498562164, 0.19598527440470287, 0.23921461895440915]
 
-@st.cache
-def load_data(file_path):
-    return pd.read_excel(file_path)
+plt.figure(figsize=(10, 6))
+plt.title('Таджикистан')
+plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-')
+plt.xticks(years)
+plt.yticks(np.arange(0, 0.31, 0.05))
+plt.grid(True)
+plt.show()
 
-st.title('Анализ данных о продовольственной безопасности')
+kgz_2014 = r'C:\Users\sekre\Downloads\kgz\KGZ_2014_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kgz_2015 = r'C:\Users\sekre\Downloads\kgz\KGZ_2015_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kgz_2016 = r'C:\Users\sekre\Downloads\kgz\KGZ_2016_FIES_v01_EN_M_v01_A_OCS (1).dta'
+kgz_2017 = r'C:\Users\sekre\Downloads\kgz\KGZ_2017_FIES_v01_EN_M_v01_A_OCS (1).dta'
 
-selected_dataset = st.selectbox('Выберите набор данных:', list(file_paths.keys()))
+pandas_df_kgz_2014 = pd.read_stata(kgz_2014)
+pandas_df_kgz_2015 = pd.read_stata(kgz_2015)
+pandas_df_kgz_2016 = pd.read_stata(kgz_2016)
+pandas_df_kgz_2017 = pd.read_stata(kgz_2017)
 
-data = load_data(file_paths[selected_dataset])
+numeric_columns_kgz_2014 = pandas_df_kgz_2014.select_dtypes(include=[np.number]).columns
+pandas_df_kgz_2014[numeric_columns_kgz_2014] = pandas_df_kgz_2014[numeric_columns_kgz_2014].fillna(0)
 
-st.write('Первые несколько строк данных:')
-st.write(data.head())
+numeric_columns_kgz_2015 = pandas_df_kgz_2015.select_dtypes(include=[np.number]).columns
+pandas_df_kgz_2015[numeric_columns_kgz_2015] = pandas_df_kgz_2015[numeric_columns_kgz_2015].fillna(0)
 
-st.write('Визуализация данных:')
-fig = px.line(data, x=data.index, y='Prob_Mod_Sev', title='Продовольственная безопасность в Казахстане по годам')
-st.plotly_chart(fig)
+numeric_columns_kgz_2016 = pandas_df_kgz_2016.select_dtypes(include=[np.number]).columns
+pandas_df_kgz_2016[numeric_columns_kgz_2016] = pandas_df_kgz_2016[numeric_columns_kgz_2016].fillna(0)
+
+numeric_columns_kgz_2017 = pandas_df_kgz_2017.select_dtypes(include=[np.number]).columns
+pandas_df_kgz_2017[numeric_columns_kgz_2017] = pandas_df_kgz_2017[numeric_columns_kgz_2017].fillna(0)
+
+dask_df_kgz_2014 = dd.from_pandas(pandas_df_kgz_2014, npartitions=1)
+dask_df_kgz_2015 = dd.from_pandas(pandas_df_kgz_2015, npartitions=1)
+dask_df_kgz_2016 = dd.from_pandas(pandas_df_kgz_2016, npartitions=1)
+dask_df_kgz_2017 = dd.from_pandas(pandas_df_kgz_2017, npartitions=1)
+
+dask_df_kgz_2014.compute().to_excel(r"C:\Users\sekre\Downloads\kgz_2014.xlsx", index=False)
+dask_df_kgz_2015.compute().to_excel(r"C:\Users\sekre\Downloads\kgz_2015.xlsx", index=False)
+dask_df_kgz_2016.compute().to_excel(r"C:\Users\sekre\Downloads\kgz_2016.xlsx", index=False)
+dask_df_kgz_2017.compute().to_excel(r"C:\Users\sekre\Downloads\kgz_2017.xlsx", index=False)
+
+F_ad_Prob_Mod_Sev_kgz_2014 = (dask_df_kgz_2014['Prob_Mod_Sev'] * dask_df_kgz_2014['wt']).sum() / dask_df_kgz_2014['wt'].sum()
+F_ad_Prob_Mod_Sev_kgz_2015 = (dask_df_kgz_2015['Prob_Mod_Sev'] * dask_df_kgz_2015['wt']).sum() / dask_df_kgz_2015['wt'].sum()
+F_ad_Prob_Mod_Sev_kgz_2016 = (dask_df_kgz_2016['Prob_Mod_Sev'] * dask_df_kgz_2016['wt']).sum() / dask_df_kgz_2016['wt'].sum()
+F_ad_Prob_Mod_Sev_kgz_2017 = (dask_df_kgz_2017['Prob_Mod_Sev'] * dask_df_kgz_2017['wt']).sum() / dask_df_kgz_2017['wt'].sum()
+
+F_ad_Prob_Mod_Sev_kgz_values = [0.1875365079274166, 0.21059007745097164, 0.19581301002148638, 0.19449654750600165]
+
+plt.figure(figsize=(10, 6))
+plt.title('Кыргызстан')
+plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-')
+plt.xticks(years)
+plt.yticks(np.arange(0, 0.3, 0.05))
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
+plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
+plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
+plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
+plt.title('Центральная Азия')
+plt.xticks(years)
+plt.yticks(np.arange(0, 0.3, 0.05))
+plt.legend()
+plt.grid(True)
+plt.show()
+
+st.title("Анализ данных Центральной Азии")
+
+st.subheader("Графики для каждой страны")
+
+st.pyplot(plt)
