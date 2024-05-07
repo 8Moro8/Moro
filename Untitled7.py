@@ -3,7 +3,6 @@ import numpy as np
 import requests
 from io import BytesIO
 import streamlit as st
-import matplotlib.pyplot as plt
 
 def load_and_process_data(country, file_path_prefix):
 
