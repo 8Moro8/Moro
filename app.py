@@ -1,3 +1,7 @@
+streamlit==0.86.0
+pandas==1.3.3
+plotly==5.3.1
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
