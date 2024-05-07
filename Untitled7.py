@@ -9,7 +9,7 @@ def load_and_process_data(country, file_path_prefix):
     import requests
     from io import BytesIO
 
-    base_url = 'https://github.com/8Moro8/Moro/raw/main/'
+    base_url = 'https://github.com/8Moro8/Moro/blob/main/'
 
     F_ad_Prob_Mod_Sev_values = []
 
