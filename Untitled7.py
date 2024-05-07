@@ -1,13 +1,11 @@
 import pandas as pd
 import numpy as np
-import dask.dataframe as dd
+import requests
+from io import BytesIO
 import streamlit as st
 import matplotlib.pyplot as plt
 
 def load_and_process_data(country, file_path_prefix):
-    import pandas as pd
-    import requests
-    from io import BytesIO
 
     base_url = 'https://github.com/8Moro8/Moro/blob/main/'
 
