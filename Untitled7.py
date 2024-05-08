@@ -46,19 +46,6 @@ plt.yticks(np.arange(0, 0.3, 0.05))
 plt.grid(True)
 plt.show()
 
-plt.figure(figsize=(10, 6))
-plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
-plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
-plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
-plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
-plt.title('Центральная Азия')
-plt.xticks(years)
-plt.yticks(np.arange(0, 0.3, 0.05))
-plt.legend()
-plt.grid(True)
-plt.show()
-
-# Создаем выпадающее меню для выбора графика
 selected_country = st.selectbox('Выберите страну Центральной Азии', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан'])
 
 if selected_country == 'Казахстан':
@@ -73,3 +60,16 @@ elif selected_country == 'Таджикистан':
 else:
     st.write('### Кыргызстан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kgz_values, index=years))
+else:
+    st.write('### Общий график')
+    plt.figure(figsize=(10, 6))
+    plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
+    plt.title('Центральная Азия')
+    plt.xticks(years)
+    plt.yticks(np.arange(0, 0.3, 0.05))
+    plt.legend()
+    plt.grid(True)
+    st.pyplot()
