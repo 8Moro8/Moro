@@ -35,10 +35,10 @@ df = load_data(excel_urls[file_name])
 F_ad_Prob_Mod_Sev = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
 
 # Построение графика
-plt.plot(df['Year'], F_ad_Prob_Mod_Sev, marker='o', linestyle='-', label='F_ad_Prob_Mod_Sev')
+plt.plot(df['Year'], F_Prob_Mod_Sev, marker='o', linestyle='-', label='F_Prob_Mod_Sev')
 plt.xlabel('Year')
-plt.ylabel('F_ad_Prob_Mod_Sev')
-plt.title(f'F_ad_Prob_Mod_Sev for {file_name}')
+plt.ylabel('F_Prob_Mod_Sev (%)')
+plt.title(f'F_Prob_Mod_Sev for {file_name}')
 plt.legend()
 plt.grid(True)
 st.pyplot(plt)
