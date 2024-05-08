@@ -3,18 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.sidebar.markdown(
-    """
-    <style>
-    .sidebar-content {
-        background-color: #f0f0f0 !important; /* Цвет фона боковой панели */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
+st.image("1489.jpg", caption="Мой логотип", use_column_width=True)
 st.markdown("<h1 style='text-align: center; color: red; font-family: Times New Roman;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center; font-family: Times New Roman;'>Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center;'>←--------------------------------</h1>", unsafe_allow_html=True)
