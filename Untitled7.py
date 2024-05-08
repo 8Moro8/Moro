@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 excel_urls = {
     'kaz_2014': 'https://github.com/8Moro8/Moro/raw/main/kaz_2014.xlsx',
