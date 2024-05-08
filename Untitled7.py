@@ -42,7 +42,7 @@ plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
 plt.plot(range(2014, 2018), F_Prob_Mod_Sev_values, marker='o', linestyle='-')
 plt.xticks(range(2014, 2018))
-plt.yticks(np.arange(0, 0.31, 0.05))
+plt.yticks(np.arange(0, 0.31, 0.05))  # Переместил сюда
 plt.grid(True)
 plt.xlabel('Year')
 plt.ylabel('F_Prob_Mod_Sev (%)')
