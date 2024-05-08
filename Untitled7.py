@@ -42,6 +42,7 @@ kaz_button = st.sidebar.button('Казахстан')
 uzb_button = st.sidebar.button('Узбекистан')
 tjk_button = st.sidebar.button('Таджикистан')
 kgz_button = st.sidebar.button('Кыргызстан')
+all_countries_button = st.sidebar.button('Все страны')
 
 # Резервируем место для графика на главном экране
 chart_placeholder = st.empty()
@@ -55,7 +56,7 @@ elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-else:
+elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
     ax.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
@@ -66,5 +67,4 @@ else:
     ax.set_yticks(np.arange(0, 0.3, 0.05))
     ax.legend()
     ax.grid(True)
-    st.pyplot(fig)
-
+    chart_placeholder.pyplot(fig)
