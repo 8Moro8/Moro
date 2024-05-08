@@ -1,0 +1,4 @@
+body {
+    background-image: url('background_image.jpg'); /* изображение фона */
+    background-size: cover; /* масштабирование изображения, чтобы оно полностью покрывало задний фон */
+}
