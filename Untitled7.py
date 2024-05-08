@@ -43,3 +43,15 @@ else:
     ax.legend()
     ax.grid(True)
     st.pyplot(fig)
+
+# Установка фона страницы
+st.markdown(
+    """
+    <style>
+    body {
+        background-image: url('https://github.com/8Moro8/Moro/raw/main/1489.jpg');
+        background-size: cover;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
