@@ -29,7 +29,7 @@ def load_data(file_url):
 
 df = load_data(excel_urls[file_name])
 
-# Вычисление F_ad_Prob_Mod_Sev для каждой страны и года
+# Создаем столбец F_ad_Prob_Mod_Sev
 df['F_ad_Prob_Mod_Sev'] = df['Prob_Mod_Sev'] * df['wt'] / df['wt'].sum()
 
 # Построение графиков
