@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.title('Данная страница представляет тренды продовольственной безопасности центральной Азии')
+st.title('Данная страница представляет тренды продовольственной безопасности центральной Азии', size = 12)
 st.title("Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку")
 st.title("←--------------------------------")
 
@@ -22,8 +22,6 @@ def plot_country_graph(country, values, years):
     ax.grid(True)
     st.pyplot(fig)
 
-
-# Кнопки в боковой панели
 st.sidebar.header("Выберите страну")
 kaz_button = st.sidebar.button('Казахстан')
 uzb_button = st.sidebar.button('Узбекистан')
@@ -31,10 +29,8 @@ tjk_button = st.sidebar.button('Таджикистан')
 kgz_button = st.sidebar.button('Кыргызстан')
 all_countries_button = st.sidebar.button('Все страны')
 
-# Резервируем место для графика на главном экране
 chart_placeholder = st.empty()
 
-# Вывод графика при нажатии на кнопку
 if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
 elif uzb_button:
