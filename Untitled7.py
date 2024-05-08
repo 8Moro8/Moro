@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.title('Данная страница представляет тренды продовольственной безопасности центральной Азии', subtitle = 12)
+st.markdown("<h1 style='text-align: center; color: red;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
 st.title("Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку")
 st.title("←--------------------------------")
 
