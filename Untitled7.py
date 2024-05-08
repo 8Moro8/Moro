@@ -46,22 +46,22 @@ plt.yticks(np.arange(0, 0.3, 0.05))
 plt.grid(True)
 plt.show()
 
-selected_country = st.selectbox('Выберите страну Центральной Азии', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан'])
+button = st.selectbox('Выберите график', ['Центральная Азия', 'Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан'])
 
-if selected_country == 'Казахстан':
+if button == 'Казахстан':
     st.write('### Казахстан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kaz_values, index=years))
-elif selected_country == 'Узбекистан':
+elif button == 'Узбекистан':
     st.write('### Узбекистан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_uzb_values, index=years))
-elif selected_country == 'Таджикистан':
+elif button == 'Таджикистан':
     st.write('### Таджикистан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_tjk_values, index=years))
-elif selected_country == 'Кыргызстан':
+elif button == 'Кыргызстан':
     st.write('### Кыргызстан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kgz_values, index=years))
 else:
-    st.write('### Общий график')
+    st.write('### Центральная Азия')
     plt.figure(figsize=(10, 6))
     plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
     plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
