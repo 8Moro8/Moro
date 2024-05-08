@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 background_image = '''
 <style>
 body {
-    background-image: url("https://example.com/background_image.jpg");
+    background-image: url("https://github.com/8Moro8/Moro/blob/main/1489.jpg");
     background-size: cover;
 }
 </style>
