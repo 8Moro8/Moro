@@ -33,15 +33,17 @@ df = load_data(excel_urls[file_name])
 
 # Создание списка значений F_Prob_Mod_Sev для каждого года с 2014 по 2017
 F_Prob_Mod_Sev_values = []
-for year in (2014, 2015, 2016, 2017):
+for year in range(2014, 2018):
     F_Prob_Mod_Sev = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
     F_Prob_Mod_Sev_values.append(F_Prob_Mod_Sev)
 
 # Построение графика
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
-plt.plot(year, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
-plt.xticks(years)
+plt.plot(range(2014, 2018), F_Prob_Mod_Sev_values, marker='o', linestyle='-')
+plt.xticks(range(2014, 2018))
 plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
-plt.show()
+plt.xlabel('Year')
+plt.ylabel('F_Prob_Mod_Sev (%)')
+st.pyplot(plt)
