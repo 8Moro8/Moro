@@ -28,7 +28,7 @@ kaz_button = st.sidebar.button('Казахстан')
 uzb_button = st.sidebar.button('Узбекистан')
 tjk_button = st.sidebar.button('Таджикистан')
 kgz_button = st.sidebar.button('Кыргызстан')
-all_countries_button = st.sidebar.button('Все страны')
+all_countries_button = st.sidebar.button('Общий график')
 
 chart_placeholder = st.empty()
 
