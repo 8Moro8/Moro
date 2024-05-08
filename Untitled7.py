@@ -26,25 +26,27 @@ excel_urls = {
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
 # Загрузка данных
-@st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
 df = load_data(excel_urls[file_name])
 
-# Создание списка значений F_Prob_Mod_Sev для каждого года с 2014 по 2017
-F_Prob_Mod_Sev_values = []
-for year in range(2014, 2018):
-    F_Prob_Mod_Sev = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-    F_Prob_Mod_Sev_values.append(F_Prob_Mod_Sev)
+# Расчет F_ad_Prob_Mod_Sev для каждого года
+F_ad_Prob_Mod_Sev_kaz_2014 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2015 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2016 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_2017 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
+F_ad_Prob_Mod_Sev_kaz_values = [F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
+
+# Отображение данных
+st.write(df)
 
 # Построение графика
+year = range(2014, 2018)
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
-plt.plot(range(2014, 2018), F_Prob_Mod_Sev_values, marker='o', linestyle='-')
-plt.xticks(range(2014, 2018))
-plt.yticks(np.arange(0, 0.31, 0.05))  # Переместил сюда
+plt.plot(year, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
+plt.xticks(year)
+plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
-plt.xlabel('Year')
-plt.ylabel('F_Prob_Mod_Sev (%)')
-st.pyplot(plt)
+plt.show()
