@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 excel_urls = {
     'kaz_2014': 'https://github.com/8Moro8/Moro/raw/main/kaz_2014.xlsx',
@@ -24,14 +24,21 @@ excel_urls = {
 # Выбор файла
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
+# Загрузка данных
+@st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
 df = load_data(excel_urls[file_name])
 
-# Вычисление F_ad_Prob_Mod_Sev для каждой страны и года
-df['F_ad_Prob_Mod_Sev'] = df['Prob_Mod_Sev'] * df['wt'] / df['wt'].sum()
+# Расчет значений F_ad_Prob_Mod_Sev
+F_ad_Prob_Mod_Sev = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
 
-# Построение графиков
-fig = px.line(df, x='Year', y='F_ad_Prob_Mod_Sev', color='Country', title='Графики для каждой страны')
-st.plotly_chart(fig)
+# Построение графика
+plt.plot(df['Year'], F_ad_Prob_Mod_Sev, marker='o', linestyle='-', label='F_ad_Prob_Mod_Sev')
+plt.xlabel('Year')
+plt.ylabel('F_ad_Prob_Mod_Sev')
+plt.title(f'F_ad_Prob_Mod_Sev for {file_name}')
+plt.legend()
+plt.grid(True)
+st.pyplot(plt)
