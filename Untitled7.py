@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.markdown("<h1 style='text-align: center; color: red; font-family: Times New Roman;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center; font-family: Times New Roman;'>Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку</h1>", unsafe_allow_html=True)
-st.markdown("<h2>←--------------------------------</h1>")
+st.markdown("<h2>←--------------------------------</h2>", unsafe_allow_html=True)
 
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
