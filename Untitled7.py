@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.image("1489.jpg", use_column_width=True, output_format='JPG')
+st.image("1489.jpg")
 st.markdown("<h1 style='text-align: center; color: red; font-family: Times New Roman;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center; font-family: Times New Roman;'>Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center;'>←--------------------------------</h1>", unsafe_allow_html=True)
