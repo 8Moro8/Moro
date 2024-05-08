@@ -35,30 +35,6 @@ def plot_country_graph(country, values, years):
     ax.grid(True)
     st.pyplot(fig)
 
-button = st.selectbox('Выберите график', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан', 'Центральная Азия'])
-
-if button == 'Казахстан':
-    plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-elif button == 'Узбекистан':
-    plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-elif button == 'Таджикистан':
-    plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-elif button == 'Кыргызстан':
-    plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-else:
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
-    ax.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
-    ax.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
-    ax.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
-    ax.set_title('Центральная Азия')
-    ax.set_xticks(years)
-    ax.set_yticks(np.arange(0, 0.3, 0.05))
-    ax.legend()
-    ax.grid(True)
-    st.pyplot(fig)
-
-
 if st.button('Казахстан'):
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
 elif st.button('Узбекистан'):
