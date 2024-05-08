@@ -35,13 +35,12 @@ def plot_country_graph(country, values, years):
     ax.grid(True)
     st.pyplot(fig)
 
-with st.sidebar:
-    st.header("Выберите страну")
-    if st.sidebar.button('Казахстан'):
-        plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-    elif st.sidebar.button('Узбекистан'):
-        plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-    elif st.sidebar.button('Таджикистан'):
-        plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-    elif st.sidebar.button('Кыргызстан'):
-        plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
+st.header("Выберите страну")
+if st.button('Казахстан'):
+    plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
+elif st.button('Узбекистан'):
+    plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
+elif st.button('Таджикистан'):
+    plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
+elif st.button('Кыргызстан'):
+    plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
