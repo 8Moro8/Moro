@@ -35,4 +35,5 @@ df = load_data(excel_urls[file_name])
 
 # Отображение данных
 st.write(df)
+st.write(F_ad_Prob_Mod_Sev_values)
 
