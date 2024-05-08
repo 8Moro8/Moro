@@ -57,7 +57,7 @@ elif selected_country == 'Узбекистан':
 elif selected_country == 'Таджикистан':
     st.write('### Таджикистан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_tjk_values, index=years))
-elif:
+elif
     st.write('### Кыргызстан')
     st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kgz_values, index=years))
 else:
