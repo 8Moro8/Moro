@@ -24,8 +24,6 @@ excel_urls = {
 # Выбор файла
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
-# Загрузка данных
-@st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
