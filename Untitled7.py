@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 
-years = np.linspace(2014, 2017, 4, dtype=int)
+years = [2014, 2015, 2016, 2017]
 
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
