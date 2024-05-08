@@ -7,7 +7,7 @@ st.markdown(
     """
     <style>
     body {
-        background-color: #f0f0f0; /* Цвет фона страницы */
+        background-color: #f0f0f0 !important; /* Цвет фона страницы */
     }
     </style>
     """,
