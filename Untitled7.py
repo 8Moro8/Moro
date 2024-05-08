@@ -3,17 +3,19 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-background_image = '''
-<style>
-body {
-    background-image: url("https://github.com/8Moro8/Moro/blob/main/1489.jpg");
-    background-size: cover;
-}
-</style>
-'''
+background_image = 'https://github.com/8Moro8/Moro/blob/main/1489.jpg'
 
-# Выводим HTML блок
-st.markdown(background_image, unsafe_allow_html=True)
+# Установка изображения как фона
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url("{background_image}") no-repeat center center fixed;
+        background-size: cover;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
 
 
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
