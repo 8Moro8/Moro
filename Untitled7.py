@@ -12,13 +12,13 @@ years = [2014, 2015, 2016, 2017]
 
 # Вывод графиков по отдельности
 def plot_country_graph(country, values, years):
-    plt.figure(figsize=(10, 6))
-    plt.title(country)
-    plt.plot(years, values, marker='o', linestyle='-')
-    plt.xticks(years)
-    plt.yticks(np.arange(0, 0.31, 0.05))
-    plt.grid(True)
-    st.pyplot()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(years, values, marker='o', linestyle='-')
+    ax.set_title(country)
+    ax.set_xticks(years)
+    ax.set_yticks(np.arange(0, 0.31, 0.05))
+    ax.grid(True)
+    st.pyplot(fig)
 
 # Выбор графика с помощью кнопки
 button = st.selectbox('Выберите график', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан', 'Центральная Азия'])
@@ -32,14 +32,14 @@ elif button == 'Таджикистан':
 elif button == 'Кыргызстан':
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
 else:
-    plt.figure(figsize=(10, 6))
-    plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
-    plt.title('Центральная Азия')
-    plt.xticks(years)
-    plt.yticks(np.arange(0, 0.3, 0.05))
-    plt.legend()
-    plt.grid(True)
-    st.pyplot()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
+    ax.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-', label='Узбекистан')
+    ax.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-', label='Кыргызстан')
+    ax.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-', label='Таджикистан')
+    ax.set_title('Центральная Азия')
+    ax.set_xticks(years)
+    ax.set_yticks(np.arange(0, 0.3, 0.05))
+    ax.legend()
+    ax.grid(True)
+    st.pyplot(fig)
