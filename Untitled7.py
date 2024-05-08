@@ -22,31 +22,39 @@ excel_urls = {
     'uzb_2017': 'https://github.com/8Moro8/Moro/raw/main/uzb_2017.xlsx'
 }
 
+# Функция для расчета F_ad_Prob_Mod_Sev
+def calculate_F_ad_Prob_Mod_Sev(df):
+    return (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
+
 # Выбор файла
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
 # Загрузка данных
+@st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
 df = load_data(excel_urls[file_name])
 
-# Расчет F_ad_Prob_Mod_Sev для каждого года
-F_ad_Prob_Mod_Sev_kaz_2014 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-F_ad_Prob_Mod_Sev_kaz_2015 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-F_ad_Prob_Mod_Sev_kaz_2016 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-F_ad_Prob_Mod_Sev_kaz_2017 = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-F_ad_Prob_Mod_Sev_kaz_values = [F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
-
 # Отображение данных
 st.write(df)
 
+# Список для хранения значений F_ad_Prob_Mod_Sev для каждого года
+F_ad_Prob_Mod_Sev_values = []
+
+# Расчет F_ad_Prob_Mod_Sev для каждого года
+for year in range(2014, 2018):
+    df_year = df[df['Year'] == year]
+    F_ad_Prob_Mod_Sev_values.append(calculate_F_ad_Prob_Mod_Sev(df_year))
+
 # Построение графика
-year = range(2014, 2018)
+years = range(2014, 2018)
 plt.figure(figsize=(10, 6))
-plt.title('Казахстан')
-plt.plot(year, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
-plt.xticks(year)
+plt.title(file_name)
+plt.plot(years, F_ad_Prob_Mod_Sev_values, marker='o', linestyle='-')
+plt.xticks(years)
 plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
-plt.show()
+
+# Вывод графика в Streamlit
+st.pyplot(plt)
