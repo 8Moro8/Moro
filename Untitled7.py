@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-background_image = 'https://github.com/8Moro8/Moro/blob/main/1489.jpg'
+background_image = 'https://ea-monitor.kz/userfiles/article_img/full/1489.jpg'
 
 # Установка изображения как фона
 st.markdown(
