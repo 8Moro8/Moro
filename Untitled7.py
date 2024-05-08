@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 excel_urls = {
     'kaz_2014': 'https://github.com/8Moro8/Moro/raw/main/kaz_2014.xlsx',
@@ -34,5 +35,5 @@ df = load_data(excel_urls[file_name])
 df['F_ad_Prob_Mod_Sev'] = df['Prob_Mod_Sev'] * df['wt'] / df['wt'].sum()
 
 # Построение графиков
-fig = px.line(df, x='Year', y='F_ad_Prob_Mod_Sev', color='Country', title='Графики для каждой страны')
+fig = px.line(df, x='F_ad_Prob_Mod_Sev', y='Year', color='Country', title='Графики для каждой страны')
 st.plotly_chart(fig)
