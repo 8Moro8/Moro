@@ -27,13 +27,12 @@ file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys
 @st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
-    
-    F_ad_Prob_Mod_Sev = (pandas_df['Prob_Mod_Sev'] * pandas_df['wt']).sum() / pandas_df['wt'].sum()
-    F_ad_Prob_Mod_Sev_values.append(float(F_ad_Prob_Mod_Sev))
 
 df = load_data(excel_urls[file_name])
 
-# Отображение данных
-st.write(df)
-st.write(F_ad_Prob_Mod_Sev_values)
+# Вычисление F_ad_Prob_Mod_Sev для каждой страны и года
+df['F_ad_Prob_Mod_Sev'] = df['Prob_Mod_Sev'] * df['wt'] / df['wt'].sum()
 
+# Построение графиков
+fig = px.line(df, x='Year', y='F_ad_Prob_Mod_Sev', color='Country', title='Графики для каждой страны')
+st.plotly_chart(fig)
