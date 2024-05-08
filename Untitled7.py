@@ -38,13 +38,13 @@ F_ad_Prob_Mod_Sev_kaz_2017 = (dask_df_kaz_2017['Prob_Mod_Sev'] * dask_df_kaz_201
 
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 
-years = np.range(2014, 2018)
+years = np.arange(2014, 2018).astype(int)
 
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
 plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
 plt.xticks(years)
-plt.yticks(np.range(0, 0.31, 0.05))
+plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
 plt.show()
 
@@ -89,7 +89,7 @@ plt.figure(figsize=(10, 6))
 plt.title('Узбекистан')
 plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-')
 plt.xticks(years)
-plt.yticks(np.range(0, 0.31, 0.05))
+plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
 plt.show()
 
@@ -131,7 +131,7 @@ plt.figure(figsize=(10, 6))
 plt.title('Таджикистан')
 plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-')
 plt.xticks(years)
-plt.yticks(np.range(0, 0.31, 0.05))
+plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
 plt.show()
 
@@ -173,7 +173,7 @@ plt.figure(figsize=(10, 6))
 plt.title('Кыргызстан')
 plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-')
 plt.xticks(years)
-plt.yticks(np.range(0, 0.3, 0.05))
+plt.yticks(np.arange(0, 0.3, 0.05))
 plt.grid(True)
 plt.show()
 
