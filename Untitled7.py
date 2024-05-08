@@ -36,7 +36,7 @@ F_ad_Prob_Mod_Sev_kaz_2015 = (dask_df_kaz_2015['Prob_Mod_Sev'] * dask_df_kaz_201
 F_ad_Prob_Mod_Sev_kaz_2016 = (dask_df_kaz_2016['Prob_Mod_Sev'] * dask_df_kaz_2016['wt']).sum() / dask_df_kaz_2016['wt'].sum()
 F_ad_Prob_Mod_Sev_kaz_2017 = (dask_df_kaz_2017['Prob_Mod_Sev'] * dask_df_kaz_2017['wt']).sum() / dask_df_kaz_2017['wt'].sum()
 
-F_ad_Prob_Mod_Sev_kaz_values = F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
+F_ad_Prob_Mod_Sev_kaz_values = [F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
 
 years = range(2014, 2018)
 
