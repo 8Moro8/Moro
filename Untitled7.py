@@ -29,9 +29,9 @@ def load_data(file_url):
 
 df = load_data(excel_urls[file_name])
 
-# Создаем столбец F_ad_Prob_Mod_Sev
+# Вычисление F_ad_Prob_Mod_Sev для каждой страны и года
 df['F_ad_Prob_Mod_Sev'] = df['Prob_Mod_Sev'] * df['wt'] / df['wt'].sum()
 
 # Построение графиков
-fig = px.line(df, x='F_ad_Prob_Mod_Sev', y='Year', color='Country', title='Графики для каждой страны')
+fig = px.line(df, x='Year', y='F_ad_Prob_Mod_Sev', color='Country', title='Графики для каждой страны')
 st.plotly_chart(fig)
