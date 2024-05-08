@@ -36,7 +36,7 @@ F_ad_Prob_Mod_Sev_kaz_2015 = (dask_df_kaz_2015['Prob_Mod_Sev'] * dask_df_kaz_201
 F_ad_Prob_Mod_Sev_kaz_2016 = (dask_df_kaz_2016['Prob_Mod_Sev'] * dask_df_kaz_2016['wt']).sum() / dask_df_kaz_2016['wt'].sum()
 F_ad_Prob_Mod_Sev_kaz_2017 = (dask_df_kaz_2017['Prob_Mod_Sev'] * dask_df_kaz_2017['wt']).sum() / dask_df_kaz_2017['wt'].sum()
 
-F_ad_Prob_Mod_Sev_kaz_values = [F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
+F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 
 years = np.arange(2014, 2018)
 
@@ -83,7 +83,7 @@ F_ad_Prob_Mod_Sev_uzb_2015 = (dask_df_uzb_2015['Prob_Mod_Sev'] * dask_df_uzb_201
 F_ad_Prob_Mod_Sev_uzb_2016 = (dask_df_uzb_2016['Prob_Mod_Sev'] * dask_df_uzb_2016['wt']).sum() / dask_df_uzb_2016['wt'].sum()
 F_ad_Prob_Mod_Sev_uzb_2017 = (dask_df_uzb_2017['Prob_Mod_Sev'] * dask_df_uzb_2017['wt']).sum() / dask_df_uzb_2017['wt'].sum()
 
-F_ad_Prob_Mod_Sev_uzb_values = [F_ad_Prob_Mod_Sev_uzb_2014, F_ad_Prob_Mod_Sev_uzb_2015, F_ad_Prob_Mod_Sev_uzb_2016, F_ad_Prob_Mod_Sev_uzb_2017]
+F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
 
 plt.figure(figsize=(10, 6))
 plt.title('Узбекистан')
@@ -125,7 +125,7 @@ F_ad_Prob_Mod_Sev_tjk_2015 = (dask_df_tjk_2015['Prob_Mod_Sev'] * dask_df_tjk_201
 F_ad_Prob_Mod_Sev_tjk_2016 = (dask_df_tjk_2016['Prob_Mod_Sev'] * dask_df_tjk_2016['wt']).sum() / dask_df_tjk_2016['wt'].sum()
 F_ad_Prob_Mod_Sev_tjk_2017 = (dask_df_tjk_2017['Prob_Mod_Sev'] * dask_df_tjk_2017['wt']).sum() / dask_df_tjk_2017['wt'].sum()
 
-F_ad_Prob_Mod_Sev_tjk_values = [F_ad_Prob_Mod_Sev_tjk_2014, F_ad_Prob_Mod_Sev_tjk_2015, F_ad_Prob_Mod_Sev_tjk_2016, F_ad_Prob_Mod_Sev_tjk_2017]
+F_ad_Prob_Mod_Sev_tjk_values = [0.13234311608076732, 0.11086727498562164, 0.19598527440470287, 0.23921461895440915]
 
 plt.figure(figsize=(10, 6))
 plt.title('Таджикистан')
@@ -167,7 +167,7 @@ F_ad_Prob_Mod_Sev_kgz_2015 = (dask_df_kgz_2015['Prob_Mod_Sev'] * dask_df_kgz_201
 F_ad_Prob_Mod_Sev_kgz_2016 = (dask_df_kgz_2016['Prob_Mod_Sev'] * dask_df_kgz_2016['wt']).sum() / dask_df_kgz_2016['wt'].sum()
 F_ad_Prob_Mod_Sev_kgz_2017 = (dask_df_kgz_2017['Prob_Mod_Sev'] * dask_df_kgz_2017['wt']).sum() / dask_df_kgz_2017['wt'].sum()
 
-F_ad_Prob_Mod_Sev_kgz_values = [F_ad_Prob_Mod_Sev_kgz_2014,F_ad_Prob_Mod_Sev_kgz_2015, F_ad_Prob_Mod_Sev_kgz_2016, F_ad_Prob_Mod_Sev_kgz_2017]
+F_ad_Prob_Mod_Sev_kgz_values = [0.1875365079274166, 0.21059007745097164, 0.19581301002148638, 0.19449654750600165]
 
 plt.figure(figsize=(10, 6))
 plt.title('Кыргызстан')
