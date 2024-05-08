@@ -193,14 +193,14 @@ plt.show()
 selected_country = st.selectbox('Выберите страну Центральной Азии', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан'])
 
 if selected_country == 'Казахстан':
-    plt.title('Казахстан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
+    st.write('### Казахстан')
+    st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kaz_values, index=years))
 elif selected_country == 'Узбекистан':
-    plt.title('Узбекистан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-')
+    st.write('### Узбекистан')
+    st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_uzb_values, index=years))
 elif selected_country == 'Таджикистан':
-    plt.title('Таджикистан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-')
+    st.write('### Таджикистан')
+    st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_tjk_values, index=years))
 else:
-    plt.title('Кыргызстан')
-    plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-')
+    st.write('### Кыргызстан')
+    st.line_chart(pd.Series(F_ad_Prob_Mod_Sev_kgz_values, index=years))
