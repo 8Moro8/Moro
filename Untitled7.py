@@ -27,6 +27,7 @@ excel_urls = {
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
 # Загрузка данных
+@st.cache  # Кэширование данных для повышения производительности
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
@@ -40,7 +41,7 @@ def process_data(df):
 
 # Обработка данных и построение графика
 df = load_data(excel_urls[file_name])
-F_ad_Prob_Mod_Sev_values = [process_data(df[df.columns[1:]]) for _ in range(2014, 2018)]  # Одно значение для каждого года
+F_ad_Prob_Mod_Sev_values = [process_data(df)] * 4  # Одно значение повторяется 4 раза
 
 # Построение графика
 years = range(2014, 2018)
