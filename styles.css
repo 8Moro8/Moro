@@ -1,4 +1,5 @@
 body {
-    background-image: url('1489.jpg'); /* изображение фона */
+    background-color: #f0f0f0; /* цвет фона */
+    background-image: url('https://github.com/8Moro8/Moro/blob/main/1489.jpg'); /* изображение фона */
     background-size: cover; /* масштабирование изображения, чтобы оно полностью покрывало задний фон */
 }
