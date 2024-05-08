@@ -38,11 +38,9 @@ for year in (2014, 2015, 2016, 2017):
     F_Prob_Mod_Sev_values.append(F_Prob_Mod_Sev)
 
 # Построение графика
-years = range(2014, 2018)
-
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
-plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
+plt.plot(year, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
 plt.xticks(years)
 plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
