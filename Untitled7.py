@@ -36,9 +36,6 @@ def load_data(file_url):
 
 df = load_data(excel_urls[file_name])
 
-# Отображение данных
-st.write(df)
-
 # Список для хранения значений F_ad_Prob_Mod_Sev для каждого года
 F_ad_Prob_Mod_Sev_values = []
 
