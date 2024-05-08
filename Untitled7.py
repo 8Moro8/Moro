@@ -38,7 +38,7 @@ F_ad_Prob_Mod_Sev_kaz_2017 = (dask_df_kaz_2017['Prob_Mod_Sev'] * dask_df_kaz_201
 
 F_ad_Prob_Mod_Sev_kaz_values = [F_ad_Prob_Mod_Sev_kaz_2014, F_ad_Prob_Mod_Sev_kaz_2015, F_ad_Prob_Mod_Sev_kaz_2016, F_ad_Prob_Mod_Sev_kaz_2017]
 
-years = np.range(2014, 2018)
+years = np.arange(2014, 2018)
 
 plt.figure(figsize=(10, 6))
 plt.title('Казахстан')
