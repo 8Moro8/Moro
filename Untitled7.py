@@ -48,6 +48,9 @@ plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
 plt.show()
 
+print("Years:", years)
+print("F_ad_Prob_Mod_Sev_kaz_values:", F_ad_Prob_Mod_Sev_kaz_values)
+
 uzb_2014 = 'https://github.com/8Moro8/Moro/raw/main/UZB_2014_FIES_v01_EN_M_v01_A_OCS%20(1).dta'
 uzb_2015 = 'https://github.com/8Moro8/Moro/raw/main/UZB_2015_FIES_v01_EN_M_v01_A_OCS%20(1).dta'
 uzb_2016 = 'https://github.com/8Moro8/Moro/raw/main/UZB_2016_FIES_v01_EN_M_v01_A_OCS%20(1).dta'
