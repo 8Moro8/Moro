@@ -38,7 +38,7 @@ for year in (2014, 2015, 2016, 2017):
     F_Prob_Mod_Sev_values.append(F_Prob_Mod_Sev)
 
 # Построение графика
-plt.plot(2014, 2015, 2016, 2017), F_Prob_Mod_Sev_values, marker='o', linestyle='-')
+plt.plot((2014, 2015, 2016, 2017), F_Prob_Mod_Sev_values, marker='o', linestyle='-')
 plt.xlabel('Year')
 plt.ylabel('F_Prob_Mod_Sev (%)')
 plt.title(f'F_Prob_Mod_Sev for {file_name}')
