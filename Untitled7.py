@@ -34,8 +34,7 @@ df = load_data(excel_urls[file_name])
 # Создание списка значений F_Prob_Mod_Sev для каждого года с 2014 по 2017
 F_Prob_Mod_Sev_values = []
 for year in range(2014, 2018):
-    df_year = df[df['Year'] == year]
-    F_Prob_Mod_Sev = (df_year['Prob_Mod_Sev'] * df_year['wt']).sum() / df_year['wt'].sum()
+    F_Prob_Mod_Sev = (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
     F_Prob_Mod_Sev_values.append(F_Prob_Mod_Sev)
 
 # Построение графика
