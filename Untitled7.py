@@ -188,3 +188,19 @@ plt.yticks(np.arange(0, 0.3, 0.05))
 plt.legend()
 plt.grid(True)
 plt.show()
+
+# Создаем выпадающее меню для выбора графика
+selected_country = st.selectbox('Выберите страну Центральной Азии', ['Казахстан', 'Узбекистан', 'Таджикистан', 'Кыргызстан'])
+
+if selected_country == 'Казахстан':
+    plt.title('Казахстан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-')
+elif selected_country == 'Узбекистан':
+    plt.title('Узбекистан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_uzb_values, marker='o', linestyle='-')
+elif selected_country == 'Таджикистан':
+    plt.title('Таджикистан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_tjk_values, marker='o', linestyle='-')
+else:
+    plt.title('Кыргызстан')
+    plt.plot(years, F_ad_Prob_Mod_Sev_kgz_values, marker='o', linestyle='-')
