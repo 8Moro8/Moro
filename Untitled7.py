@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import dask.dataframe as dd
 
 excel_urls = {
     'kaz_2014': 'https://github.com/8Moro8/Moro/raw/main/kaz_2014.xlsx',
@@ -22,10 +23,6 @@ excel_urls = {
     'uzb_2017': 'https://github.com/8Moro8/Moro/raw/main/uzb_2017.xlsx'
 }
 
-# Функция для расчета F_ad_Prob_Mod_Sev
-def calculate_F_ad_Prob_Mod_Sev(df):
-    return (df['Prob_Mod_Sev'] * df['wt']).sum() / df['wt'].sum()
-
 # Выбор файла
 file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys()))
 
@@ -34,21 +31,26 @@ file_name = st.selectbox('Выберите файл Excel', list(excel_urls.keys
 def load_data(file_url):
     return pd.read_excel(file_url, engine='openpyxl')
 
+# Загрузка данных и вычисление F_ad_Prob_Mod_Sev
+def process_data(df):
+    numeric_columns = df.select_dtypes(include=[np.number]).columns
+    df[numeric_columns] = df[numeric_columns].fillna(0)
+    dask_df = dd.from_pandas(df, npartitions=1)
+    F_ad_Prob_Mod_Sev = (dask_df['Prob_Mod_Sev'] * dask_df['wt']).sum() / dask_df['wt'].sum()
+    return float(F_ad_Prob_Mod_Sev)
+
+# Обработка данных и построение графика
 df = load_data(excel_urls[file_name])
-
-# Список для хранения значений F_ad_Prob_Mod_Sev для каждого года
-F_ad_Prob_Mod_Sev_values = []
-
-# Расчет F_ad_Prob_Mod_Sev для каждого года
-for year in range(2014, 2018):
-    df_year = df[df['Year'] == year]
-    F_ad_Prob_Mod_Sev_values.append(calculate_F_ad_Prob_Mod_Sev(df_year))
+F_ad_Prob_Mod_Sev_values = [process_data(df[df.columns[1:]]) for _ in range(2014, 2018)]
 
 # Построение графика
 years = range(2014, 2018)
 plt.figure(figsize=(10, 6))
-plt.title(file_name)
+plt.title('Казахстан')
 plt.plot(years, F_ad_Prob_Mod_Sev_values, marker='o', linestyle='-')
 plt.xticks(years)
 plt.yticks(np.arange(0, 0.31, 0.05))
 plt.grid(True)
+
+# Вывод графика в Streamlit
+st.pyplot(plt)
