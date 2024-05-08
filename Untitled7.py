@@ -35,12 +35,25 @@ def plot_country_graph(country, values, years):
     ax.grid(True)
     st.pyplot(fig)
 
-st.header("Выберите страну")
-if st.button('Казахстан'):
+
+# Кнопки в боковой панели
+st.sidebar.header("Выберите страну")
+kaz_button = st.sidebar.button('Казахстан')
+uzb_button = st.sidebar.button('Узбекистан')
+tjk_button = st.sidebar.button('Таджикистан')
+kgz_button = st.sidebar.button('Кыргызстан')
+
+# Резервируем место для графика на главном экране
+chart_placeholder = st.empty()
+
+# Вывод графика при нажатии на кнопку
+if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-elif st.button('Узбекистан'):
+elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-elif st.button('Таджикистан'):
+elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-elif st.button('Кыргызстан'):
+elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
+else:
+    chart_placeholder.text("Выберите страну в боковой панели")
