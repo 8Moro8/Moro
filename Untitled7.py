@@ -6,7 +6,7 @@ from PIL import Image
 
 image1 = Image.open("kazflag.webp")
 image2 = Image.open("uzbflag.webp")
-image5 = Image.open("Tajikistan_Flag_589396_1920x1200.jpg")
+image3 = Image.open("Tajikistan_Flag_589396_1920x1200.jpg")
 image4 = Image.open("uzbflag.webp")
 image = Image.open("67090.jpg")
 image5 = Image.open("1489.jpg")
