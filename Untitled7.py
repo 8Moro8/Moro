@@ -15,18 +15,7 @@ st.image(image)
 
 background_image = 'maxresdefault.jpg'
 
-# Вставляем CSS стили с помощью st.markdown()
-st.markdown(
-    f"""
-    <style>
-    .reportview-container {{
-        background: url(data:image/jpeg;base64,{base64.b64encode(open(background_image, "rb").read()).decode()});
-        background-size: cover;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.image(background_image, use_column_width=True)
 
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
