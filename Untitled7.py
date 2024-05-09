@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-image1 = Image.open("kazflag.webp")
+image1 = Image.open("1233.jpg")
 image2 = Image.open("183603645.jpg")
 image3 = Image.open("Tajikistan_Flag_589396_1920x1200.jpg")
 image = Image.open("67090.jpg")
