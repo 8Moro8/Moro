@@ -65,4 +65,4 @@ elif all_countries_button:
     ax.legend()
     ax.grid(True)
     chart_placeholder.pyplot(fig)
-    chart_placeholder.image(image5)
+    chart_placeholder.image(image2)
