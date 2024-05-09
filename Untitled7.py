@@ -4,14 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-# Загрузка изображения
-# Загрузка изображения
-image = Image.open("1489.jpg")
+image = Image.open("67090.jpg")
+image5 = Image.open("1489.jpg")
 
-# Отображение изображения
 st.image(image)
+st.image(image5)
 
-# Загрузка данных
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
 F_ad_Prob_Mod_Sev_tjk_values = [0.13234311608076732, 0.11086727498562164, 0.19598527440470287, 0.23921461895440915]
@@ -42,16 +40,16 @@ chart_placeholder = st.empty()
 
 if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-    chart_placeholder.image(image)
+    chart_placeholder.image(image5)
 elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-    chart_placeholder.image(image)
+    chart_placeholder.image(image5)
 elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-    chart_placeholder.image(image)
+    chart_placeholder.image(image5)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-    chart_placeholder.image(image)
+    chart_placeholder.image(image5)
 elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
@@ -64,4 +62,4 @@ elif all_countries_button:
     ax.legend()
     ax.grid(True)
     chart_placeholder.pyplot(fig)
-    chart_placeholder.image(image)
+    chart_placeholder.image(image5)
