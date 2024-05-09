@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.image("1489.jpg")
-st.markdown("<h1 style='text-align: center; color: red; font-family: Times New Roman;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
-st.markdown("<h1 style='text-align: center; font-family: Times New Roman;'>Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку</h1>", unsafe_allow_html=True)
-st.markdown("<h1 style='text-align: center;'>←--------------------------------</h1>", unsafe_allow_html=True)
+# Загрузка изображения
+image = st.image("1489.jpg")
 
+# Загрузка данных
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
 F_ad_Prob_Mod_Sev_tjk_values = [0.13234311608076732, 0.11086727498562164, 0.19598527440470287, 0.23921461895440915]
@@ -22,6 +21,10 @@ def plot_country_graph(country, values, years):
     ax.set_yticks(np.arange(0, 0.31, 0.05))
     ax.grid(True)
     st.pyplot(fig)
+
+st.markdown("<h1 style='text-align: center; color: red; font-family: Times New Roman;'>Данная страница представляет тренды продовольственной безопасности центральной Азии</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; font-family: Times New Roman;'>Чтобы увидеть график с тенденцией нажмите на соответствующую кнопку</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>←--------------------------------</h1>", unsafe_allow_html=True)
 
 st.sidebar.header("Выберите страну")
 kaz_button = st.sidebar.button('Казахстан')
