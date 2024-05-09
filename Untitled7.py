@@ -9,7 +9,7 @@ image2 = Image.open("183603645.jpg")
 image3 = Image.open("Tajikistan_Flag_589396_1920x1200.jpg")
 image4 = Image.open("1840.jpg")
 image = Image.open("67090.jpg")
-image5 = Image.open("1489.jpg")
+image5 = Image.open("maxresdefault.jpg")
 
 st.image(image)
 
