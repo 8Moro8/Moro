@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 image1 = Image.open("kazflag.webp")
+image2 = Image.open("uzbflag.webp")
+image5 = Image.open("Flag_of_Tajikistan.svg.png")
+image4 = Image.open("uzbflag.webp")
 image = Image.open("67090.jpg")
 image5 = Image.open("1489.jpg")
 
@@ -43,13 +46,13 @@ if kaz_button:
     chart_placeholder.image(image1)
 elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-    chart_placeholder.image(image5)
+    chart_placeholder.image(image2)
 elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-    chart_placeholder.image(image5)
+    chart_placeholder.image(image3)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-    chart_placeholder.image(image5)
+    chart_placeholder.image(image4)
 elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
