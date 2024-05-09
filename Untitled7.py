@@ -7,6 +7,7 @@ from PIL import Image
 image1 = Image.open("1233.jpeg")
 image2 = Image.open("183603645.jpg")
 image3 = Image.open("Tajikistan_Flag_589396_1920x1200.jpg")
+image4 = Image.open("1840.jpg")
 image = Image.open("67090.jpg")
 image5 = Image.open("1489.jpg")
 
@@ -51,7 +52,7 @@ elif tjk_button:
     chart_placeholder.image(image3)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-    chart_placeholder.image(image1)
+    chart_placeholder.image(image4)
 elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
