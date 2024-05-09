@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
+image1 = Image.open("kazflag.webp")
 image = Image.open("67090.jpg")
 image5 = Image.open("1489.jpg")
 
@@ -39,7 +40,7 @@ chart_placeholder = st.empty()
 
 if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-    chart_placeholder.image(image5)
+    chart_placeholder.image(image1)
 elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
     chart_placeholder.image(image5)
