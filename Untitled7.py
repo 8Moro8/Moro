@@ -4,7 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Загрузка изображения
-image = st.image("1489.jpg")
+# Загрузка изображения
+image = Image.open("1489.jpg")
+
+# Отображение изображения
+st.image(image)
 
 # Загрузка данных
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
