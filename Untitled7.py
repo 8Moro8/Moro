@@ -34,12 +34,16 @@ chart_placeholder = st.empty()
 
 if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
+    chart_placeholder.image(image)
 elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
+    chart_placeholder.image(image)
 elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
+    chart_placeholder.image(image)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
+    chart_placeholder.image(image)
 elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
@@ -52,3 +56,4 @@ elif all_countries_button:
     ax.legend()
     ax.grid(True)
     chart_placeholder.pyplot(fig)
+    chart_placeholder.image(image)
