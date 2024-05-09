@@ -13,10 +13,6 @@ image5 = Image.open("maxresdefault.jpg")
 
 st.image(image)
 
-background_image = 'maxresdefault.jpg'
-
-st.image(background_image, use_column_width=True)
-
 F_ad_Prob_Mod_Sev_kaz_values = [0.0737473506983265, 0.044529239425859325, 0.07208697980276833, 0.09025550050680399]
 F_ad_Prob_Mod_Sev_uzb_values = [0.09872602667454446, 0.12482079148104783, 0.1033934827101725, 0.16342414956949367]
 F_ad_Prob_Mod_Sev_tjk_values = [0.13234311608076732, 0.11086727498562164, 0.19598527440470287, 0.23921461895440915]
@@ -47,16 +43,16 @@ chart_placeholder = st.empty()
 
 if kaz_button:
     plot_country_graph('Казахстан', F_ad_Prob_Mod_Sev_kaz_values, years)
-    chart_placeholder.image(image1)
+    st.image(image1)
 elif uzb_button:
     plot_country_graph('Узбекистан', F_ad_Prob_Mod_Sev_uzb_values, years)
-    chart_placeholder.image(image2)
+    st.image(image2)
 elif tjk_button:
     plot_country_graph('Таджикистан', F_ad_Prob_Mod_Sev_tjk_values, years)
-    chart_placeholder.image(image3)
+    st.image(image3)
 elif kgz_button:
     plot_country_graph('Кыргызстан', F_ad_Prob_Mod_Sev_kgz_values, years)
-    chart_placeholder.image(image4)
+    st.image(image4)
 elif all_countries_button:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, F_ad_Prob_Mod_Sev_kaz_values, marker='o', linestyle='-', label='Казахстан')
@@ -68,5 +64,5 @@ elif all_countries_button:
     ax.set_yticks(np.arange(0, 0.3, 0.05))
     ax.legend()
     ax.grid(True)
-    chart_placeholder.pyplot(fig)
-    chart_placeholder.image(image5)
+    st.pyplot(fig)
+    st.image(image5)
